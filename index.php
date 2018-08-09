@@ -96,7 +96,7 @@ foreach ($pdo->query('SELECT*FROM shows ORDER BY title ASC') as $row) {
 <h3>Afficher tous les clients.</h3>
 <?php
 $pdo = new PDO('mysql:host=den1.mysql1.gear.host;dbname=colyseum;charset=utf8', 'colyseum', 'Sz6x?NDz_4TL');
-foreach ($pdo->query('SELECT * FROM clients INNER JOIN cards ON clients.cardNumber = cards.cardNumber') as $row) {
+foreach ($pdo->query('SELECT * FROM clients LEFT JOIN cards ON clients.cardNumber = cards.cardNumber') as $row) {
     if($row['cardTypesId'] == 1) {
         echo 'Nom: '.$row['lastName'].'<br>Prénom: '.$row['firstName'].'<br>Date de naissance: '.$row['birthDate'].'<br>Carte de fidélité: Oui<br>Numéro de carte: '.$row['cardNumber'].'<br><br>';
     } else {
